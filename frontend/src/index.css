@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+/* Estilos personalizados para Home */
+.logo-image {
+  max-width: 100%;
+  height: auto;
+}
+
+.text-dark {
+  color: #0a0908;
+}
+
+.button-accent {
+  background-color: #c6ac8f;
+  color: #0a0908;
+}
+
+.button-accent:hover {
+  background-color: #5e503f;
+}
+
+.button-outline {
+  border-color: #5e503f;
+  color: #5e503f;
+  background-color: transparent;
+}
+
+.button-outline:hover {
+  background-color: #5e503f;
+  color: #0a0908;
+}

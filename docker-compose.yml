@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  database:
+    image: postgres:latest
+    container_name: educonexion-db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 294332
+      POSTGRES_DB: EduConexion
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  backend:
+    build:
+      context: ./backend       # apunta a tu carpeta de back
+      dockerfile: Dockerfile
+    image: educonexion-back:0.1
+    container_name: educonexion-back
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      DB_HOST: database
+      DB_PORT: "5432"
+      DB_USER: postgres
+      DB_PASSWORD: 294332
+      DB_NAME: EduConexion
+      JWT_SECRET: your_jwt_secret_here
+    depends_on:
+      - database
+
+  frontend:
+    build:
+      context: ./frontend     # apunta a tu carpeta de front
+      dockerfile: Dockerfile
+    image: educonexion-front:0.1
+    container_name: educonexion-front
+    restart: always
+    ports:
+      - "5173:80"             # expone el nginx interno en 5173
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
