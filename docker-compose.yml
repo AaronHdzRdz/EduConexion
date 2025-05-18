@@ -18,7 +18,7 @@ services:
     build:
       context: ./backend       # apunta a tu carpeta de back
       dockerfile: Dockerfile
-    image: educonexion-back:0.1
+    image: sresendiz/educonexionv1:backend-0.1
     container_name: educonexion-back
     restart: always
     ports:
@@ -37,7 +37,7 @@ services:
     build:
       context: ./frontend     # apunta a tu carpeta de front
       dockerfile: Dockerfile
-    image: educonexion-front:0.1
+    image: sresendiz/educonexionv1:frontend-0.1
     container_name: educonexion-front
     restart: always
     ports:
